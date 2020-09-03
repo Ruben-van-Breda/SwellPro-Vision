@@ -1,0 +1,6 @@
+framework module Pods_SPVision_SPVisionUITests {
+  umbrella header "Pods-SPVision-SPVisionUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
