@@ -3,12 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		0464D42F7F967D9A61FBF2A3 /* Pods_SPVision_SPVisionUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AEBCC5B80CD322284F24674 /* Pods_SPVision_SPVisionUITests.framework */; };
 		9AB6418DE6D65E68D51E8205 /* Pods_SPVisionTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CEA4ABD0A7453B83295D1B9 /* Pods_SPVisionTests.framework */; };
+		B5AF1F4A250132BF0049CDFB /* ImageClassifierSP.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = B5AF1F49250132BF0049CDFB /* ImageClassifierSP.mlmodel */; };
 		B5F46A522500D53500159C91 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F46A512500D53500159C91 /* AppDelegate.swift */; };
 		B5F46A542500D53500159C91 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F46A532500D53500159C91 /* SceneDelegate.swift */; };
 		B5F46A562500D53500159C91 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F46A552500D53500159C91 /* ViewController.swift */; };
@@ -49,6 +50,7 @@
 		49E121C9E146969FFC5426AE /* Pods-SPVision.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SPVision.release.xcconfig"; path = "Target Support Files/Pods-SPVision/Pods-SPVision.release.xcconfig"; sourceTree = "<group>"; };
 		4CEA4ABD0A7453B83295D1B9 /* Pods_SPVisionTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SPVisionTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		54A48848F71E1CA339F03F8A /* Pods-SPVisionTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SPVisionTests.release.xcconfig"; path = "Target Support Files/Pods-SPVisionTests/Pods-SPVisionTests.release.xcconfig"; sourceTree = "<group>"; };
+		B5AF1F49250132BF0049CDFB /* ImageClassifierSP.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = ImageClassifierSP.mlmodel; sourceTree = "<group>"; };
 		B5F46A4E2500D53500159C91 /* SPVision.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SPVision.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5F46A512500D53500159C91 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5F46A532500D53500159C91 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -107,7 +109,6 @@
 				43D6FCD34067BD1A53DC0AB6 /* Pods-SPVisionTests.debug.xcconfig */,
 				54A48848F71E1CA339F03F8A /* Pods-SPVisionTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -148,6 +149,7 @@
 			children = (
 				B5F46A842500DDC100159C91 /* ML Model */,
 				B5F46A512500D53500159C91 /* AppDelegate.swift */,
+				B5AF1F49250132BF0049CDFB /* ImageClassifierSP.mlmodel */,
 				B5F46A852500DDDD00159C91 /* ImageClassifier.mlmodel */,
 				B5F46A532500D53500159C91 /* SceneDelegate.swift */,
 				B5F46A552500D53500159C91 /* ViewController.swift */,
@@ -430,6 +432,7 @@
 				B5F46A562500D53500159C91 /* ViewController.swift in Sources */,
 				B5F46A522500D53500159C91 /* AppDelegate.swift in Sources */,
 				B5F46A542500D53500159C91 /* SceneDelegate.swift in Sources */,
+				B5AF1F4A250132BF0049CDFB /* ImageClassifierSP.mlmodel in Sources */,
 				B5F46A862500DDDD00159C91 /* ImageClassifier.mlmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
