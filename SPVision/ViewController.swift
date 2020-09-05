@@ -21,7 +21,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     public var hasSelectedItem = false
     var ref: DatabaseReference!
     
-    var itemString : String = "nothing"
+    var itemString : String = "Place item in frame."
     var finalItemString : String = ""
     var isShowingCard = false
     
@@ -33,7 +33,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     }()
     private lazy var boardManager : BLTNItemManager = {
         
-        let page = BLTNPageItem(title: "Scanner Snapped \(self.itemString)")
+        let page = BLTNPageItem(title: "\(self.itemString)")
         page.image = UIImage(named: "barcode.png")
         page.actionButtonTitle = "Continue"
         page.alternativeButtonTitle = "Cancel"
@@ -106,27 +106,30 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             guard var firstObservation = results.first else {return}
             
             
-            if(firstObservation.confidence > 0.90 && self.hasSelectedItem == false){
+            if(firstObservation.confidence > 0.98 && self.hasSelectedItem == false){
                 self.itemString = firstObservation.identifier.description
                 _hasSelectedItem = true
             }
             
             if(firstObservation.confidence <= 0.90 && self.hasSelectedItem == true){
-                self.itemString = "no item"
+                self.itemString = "Place item in frame."
                 _hasSelectedItem = false
                 
             }
          
             DispatchQueue.main.async { // Correct
-                self.itemText.text = "\(self.itemString), \(round(firstObservation.confidence))"
-                self.hasSelectedItem = _hasSelectedItem
-                if(_hasSelectedItem == true){
-                    self.finalItemString = self.itemString
-                    self.promptForAnswer()
-                }else{
-          
+                if(self.isShowingCard == false){
+                    self.itemText.text = "\(self.itemString)"
+                    self.hasSelectedItem = _hasSelectedItem
+                    if(_hasSelectedItem == true){
+                        self.finalItemString = self.itemString
+                        self.promptForAnswer()
+                    }else{
+                        
+                    }
                 }
             }
+            
             
           
 //            print(self.itemString, firstObservation.confidence)
@@ -151,9 +154,9 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     }
     
     func ShowSuccessCard(){
-//        DispatchQueue.main.async {
-            self.isShowingCard = true
-            let alert = UIAlertController(title: "Successfully Updated.", message: "This is an alert.", preferredStyle: .alert)
+        DispatchQueue.main.async {
+           
+            let alert = UIAlertController(title: "Successfully Updated.", message: "\(self.finalItemString) has been updated.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
                 NSLog("The \"OK\" alert occured.")
                 alert.dismiss(animated: true) {
@@ -161,12 +164,12 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
                 }
             }))
             self.present(alert, animated: true, completion: nil)
-//        }
+        }
         
     }
     
     func ShowActionsheet(){
-        let actionsheet = UIAlertController(title: "Scanner Snapped \(self.itemString)", message: "Enter QNTY:", preferredStyle: .actionSheet)
+        let actionsheet = UIAlertController(title: "\(self.itemString)", message: "Enter QNTY:", preferredStyle: .actionSheet)
         
         actionsheet.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
          NSLog("The \"OK\" alert occured.")
@@ -184,34 +187,13 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         let lb : String = finalItemString.description
         SetCurrentStock(forKey: lb)
         
-//        //Get current stock
-//        self.ref.child("\(lb)").observeSingleEvent(of: .value, with: { (snapshot) in
-//            if let data = snapshot.value as? [String : Any]{
-//                print(data["QNTY"] as? String ?? "")
-//                self.current_amount_stock = data["QNTY"] as? String ?? "ERR"
-//            }
-//            // ...
-//        }) { (error) in
-//            print(error.localizedDescription)
-//
-//        }
-        
-        let msg = "Currently in stock: \(current_amount_stock.description)"
-        
-        
+        let msg = "Currently in stock: \(current_amount_stock)"
 
-        
-        let ac = UIAlertController(title: "Snapped \(lb)", message: msg, preferredStyle: .alert)
+        let ac = UIAlertController(title: "\(lb)", message: msg, preferredStyle: .alert)
         ac.addTextField()
         
-        let submitAction = UIAlertAction(title: "Submit", style: .default) { [unowned ac] _ in
-            let answer = ac.textFields![0]
-            DispatchQueue.main.async { // Correct
-                self.UpdateFirebase(value: answer.text!, key: lb)
-            }
-            
-        }
-        let addAction = UIAlertAction(title: "Add", style: .default) { [unowned ac] _ in
+        
+        let addAction = UIAlertAction(title: "+", style: .default) { [unowned ac] _ in
                    let answer = ac.textFields![0]
                    DispatchQueue.main.async { // Correct
                     self.SetCurrentStock(forKey: "\(lb)")
@@ -220,22 +202,46 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
                     let newAm = curAm + appendAm
                     let valueString = "\(newAm)"
                     self.UpdateFirebase(value: valueString.description, key: lb)
+                     self.isShowingCard = false
                    }
                    
                }
-        
-        let cancelAction = UIAlertAction(title: "Back", style: .default) { [unowned ac] _ in
+        let subtractAction = UIAlertAction(title: "-", style: .default) { [unowned ac] _ in
+            let answer = ac.textFields![0]
+            DispatchQueue.main.async { // Correct
+             self.SetCurrentStock(forKey: "\(lb)")
+             guard let appendAm = try? Int(answer.text!) else{return}
+             guard let curAm = try? Int(self.current_amount_stock) else {return}
+             let newAm = curAm - appendAm
+             let valueString = "\(newAm)"
+             self.UpdateFirebase(value: valueString.description, key: lb)
+                 self.isShowingCard = false
+            }
+            
+        }
+        let submitAction = UIAlertAction(title: "Reset", style: .default) { [unowned ac] _ in
+            let answer = ac.textFields![0]
+            DispatchQueue.main.async { // Correct
+                self.UpdateFirebase(value: answer.text!, key: lb)
+                 self.isShowingCard = false
+            }
+            
+        }
+        let cancelAction = UIAlertAction(title: "Rescan", style: .default) { [unowned ac] _ in
             ac.dismiss(animated: true, completion: {})
+             self.isShowingCard = false
         }
         ac.textFields![0].placeholder = "Enter quantity"
         ac.textFields![0].keyboardType = .numberPad
         
         ac.addAction(addAction)
+        ac.addAction(subtractAction)
         ac.addAction(submitAction)
         ac.addAction(cancelAction)
         
-
+        
         present(ac, animated: true)
+        self.isShowingCard = true
     }
     func ShowBottomCard(){
         boardManager.prepareForInterfaceBuilder()
@@ -299,12 +305,17 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         bulletinManager.showBulletin(above: self)
        
     }
+    
+    
+    
+   
+    
 
+    
     
 }
 
-
-
+//
 
 
 

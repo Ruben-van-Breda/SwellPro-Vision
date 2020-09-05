@@ -10,13 +10,13 @@
 		0464D42F7F967D9A61FBF2A3 /* Pods_SPVision_SPVisionUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AEBCC5B80CD322284F24674 /* Pods_SPVision_SPVisionUITests.framework */; };
 		9AB6418DE6D65E68D51E8205 /* Pods_SPVisionTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CEA4ABD0A7453B83295D1B9 /* Pods_SPVisionTests.framework */; };
 		B5AF1F4A250132BF0049CDFB /* ImageClassifierSP.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = B5AF1F49250132BF0049CDFB /* ImageClassifierSP.mlmodel */; };
+		B5AF1F52250389740049CDFB /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AF1F51250389740049CDFB /* LandingViewController.swift */; };
 		B5F46A522500D53500159C91 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F46A512500D53500159C91 /* AppDelegate.swift */; };
 		B5F46A542500D53500159C91 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F46A532500D53500159C91 /* SceneDelegate.swift */; };
 		B5F46A562500D53500159C91 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F46A552500D53500159C91 /* ViewController.swift */; };
 		B5F46A592500D53500159C91 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5F46A572500D53500159C91 /* Main.storyboard */; };
 		B5F46A5C2500D53500159C91 /* SPVision.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B5F46A5A2500D53500159C91 /* SPVision.xcdatamodeld */; };
 		B5F46A5E2500D53700159C91 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5F46A5D2500D53700159C91 /* Assets.xcassets */; };
-		B5F46A612500D53700159C91 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5F46A5F2500D53700159C91 /* LaunchScreen.storyboard */; };
 		B5F46A6C2500D53700159C91 /* SPVisionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F46A6B2500D53700159C91 /* SPVisionTests.swift */; };
 		B5F46A772500D53700159C91 /* SPVisionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F46A762500D53700159C91 /* SPVisionUITests.swift */; };
 		B5F46A862500DDDD00159C91 /* ImageClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = B5F46A852500DDDD00159C91 /* ImageClassifier.mlmodel */; };
@@ -51,6 +51,7 @@
 		4CEA4ABD0A7453B83295D1B9 /* Pods_SPVisionTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SPVisionTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		54A48848F71E1CA339F03F8A /* Pods-SPVisionTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SPVisionTests.release.xcconfig"; path = "Target Support Files/Pods-SPVisionTests/Pods-SPVisionTests.release.xcconfig"; sourceTree = "<group>"; };
 		B5AF1F49250132BF0049CDFB /* ImageClassifierSP.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = ImageClassifierSP.mlmodel; sourceTree = "<group>"; };
+		B5AF1F51250389740049CDFB /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
 		B5F46A4E2500D53500159C91 /* SPVision.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SPVision.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5F46A512500D53500159C91 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5F46A532500D53500159C91 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -58,7 +59,6 @@
 		B5F46A582500D53500159C91 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B5F46A5B2500D53500159C91 /* SPVision.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SPVision.xcdatamodel; sourceTree = "<group>"; };
 		B5F46A5D2500D53700159C91 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		B5F46A602500D53700159C91 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B5F46A622500D53700159C91 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5F46A672500D53700159C91 /* SPVisionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SPVisionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5F46A6B2500D53700159C91 /* SPVisionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPVisionTests.swift; sourceTree = "<group>"; };
@@ -152,10 +152,10 @@
 				B5AF1F49250132BF0049CDFB /* ImageClassifierSP.mlmodel */,
 				B5F46A852500DDDD00159C91 /* ImageClassifier.mlmodel */,
 				B5F46A532500D53500159C91 /* SceneDelegate.swift */,
+				B5AF1F51250389740049CDFB /* LandingViewController.swift */,
 				B5F46A552500D53500159C91 /* ViewController.swift */,
 				B5F46A572500D53500159C91 /* Main.storyboard */,
 				B5F46A5D2500D53700159C91 /* Assets.xcassets */,
-				B5F46A5F2500D53700159C91 /* LaunchScreen.storyboard */,
 				B5F46A622500D53700159C91 /* Info.plist */,
 				B5F46A872500FACF00159C91 /* GoogleService-Info.plist */,
 				B5F46A5A2500D53500159C91 /* SPVision.xcdatamodeld */,
@@ -297,7 +297,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5F46A612500D53700159C91 /* LaunchScreen.storyboard in Resources */,
 				B5F46A882500FACF00159C91 /* GoogleService-Info.plist in Resources */,
 				B5F46A5E2500D53700159C91 /* Assets.xcassets in Resources */,
 				B5F46A592500D53500159C91 /* Main.storyboard in Resources */,
@@ -429,6 +428,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5F46A5C2500D53500159C91 /* SPVision.xcdatamodeld in Sources */,
+				B5AF1F52250389740049CDFB /* LandingViewController.swift in Sources */,
 				B5F46A562500D53500159C91 /* ViewController.swift in Sources */,
 				B5F46A522500D53500159C91 /* AppDelegate.swift in Sources */,
 				B5F46A542500D53500159C91 /* SceneDelegate.swift in Sources */,
@@ -475,14 +475,6 @@
 				B5F46A582500D53500159C91 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		B5F46A5F2500D53700159C91 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B5F46A602500D53700159C91 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
